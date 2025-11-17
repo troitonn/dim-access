@@ -69,8 +69,8 @@ const Hero = () => {
                 className="glassmorphism rounded-2xl p-6 backdrop-blur-md"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
-                <div className="text-3xl md:text-4xl font-bold text-white">{stat.value}</div>
-                <div className="text-white/80 mt-1">{stat.label}</div>
+                <div className="text-3xl md:text-4xl font-bold text-primary-dark">{stat.value}</div>
+                <div className="text-primary-dark/90 mt-1">{stat.label}</div>
               </div>
             ))}
           </div>
