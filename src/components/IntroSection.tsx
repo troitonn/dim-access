@@ -1,24 +1,50 @@
-const IntroSection = () => {
+import { Button } from "@/components/ui/button";
+import { Apple, Smartphone } from "lucide-react";
+
+const AppDownload = () => {
   return (
-    <section className="py-20 px-4 bg-background">
-      <div className="container mx-auto max-w-4xl">
-        <div className="text-center space-y-6 animate-fade-in-up">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Aqui é do DIM+ Saúde
+    <section className="py-20 gradient-secondary">
+      <div className="container mx-auto px-4">
+        <div className="text-center space-y-6 max-w-4xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-white">
+            Baixe nosso aplicativo
           </h2>
-          
-          <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
-            <p>
-              Temos uma assinatura anual por <span className="text-primary font-semibold">R$ 79,90/mês</span>, que garante acesso a todos os benefícios do ano. Você e seus dependentes contam com clínico geral e outros serviços, sem filas e sem depender da UBS.
-            </p>
-            
-            <p>
-              Além disso, você terá acesso a um serviço particular e personalizado que cabe no seu bolso.
-            </p>
-            
-            <p className="font-medium text-foreground">
-              O DIM+ Saúde foi criado para quem busca qualidade, rapidez e um atendimento sem burocracia, com benefícios exclusivos.
-            </p>
+          <p className="text-xl text-white/90">
+            Tenha acesso a todos os benefícios do DIM+ Saúde na palma da sua mão
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
+            <Button
+              variant="float"
+              size="lg"
+              className="bg-white text-primary hover:bg-white/90 w-full sm:w-auto"
+              asChild
+            >
+              <a
+                href="https://play.google.com/store/apps/details?id=com.javenessi.dimmsaude&pcampaignid=web_share"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Smartphone className="mr-2 h-5 w-5" />
+                Baixar na Google Play
+              </a>
+            </Button>
+
+            <Button
+              variant="float"
+              size="lg"
+              className="bg-white text-primary hover:bg-white/90 w-full sm:w-auto"
+              asChild
+            >
+              <a
+                href="https://apps.apple.com/br/app/dim-saúde/id6749953259"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Apple className="mr-2 h-5 w-5" />
+                Baixar na App Store
+              </a>
+            </Button>
           </div>
         </div>
       </div>
@@ -26,4 +52,4 @@ const IntroSection = () => {
   );
 };
 
-export default IntroSection;
+export default AppDownload;
