@@ -44,7 +44,7 @@ const Hero = () => {
           </div>
 
           {/* Conteúdo à direita */}
-          <div className="space-y-6 text-left animate-fade-in-up md:-ml-[190px] -ml-[140px]">
+          <div className="space-y-6 text-center animate-fade-in-up">
 
             {/* Título */}
             <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight">
