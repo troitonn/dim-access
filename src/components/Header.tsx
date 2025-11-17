@@ -22,25 +22,25 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50">
-      <div className="container flex h-24 items-center justify-between 
+      <div className="container flex h-20 items-center justify-between 
         bg-transparent backdrop-blur-sm">
         
-        {/* LOGO MAIOR */}
+        {/* LOGO */}
         <Link to="/" className="flex items-center space-x-2">
           <img
             src={logo}
             alt="Dim+ Saúde"
-            className="h-18 w-auto object-contain"   // AUMENTADO
+            className="h-10 w-auto object-contain"
           />
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden md:flex items-center space-x-6">
           {menuItems.map((item) => (
             <Link
               key={item.title}
               to={item.href}
-              className="text-base font-semibold text-white/90 hover:text-white transition-colors" // AUMENTADO
+              className="text-sm font-medium text-white/90 hover:text-white transition-colors"
             >
               {item.title}
             </Link>
@@ -51,18 +51,18 @@ const Header = () => {
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
           <SheetTrigger asChild className="md:hidden">
             <Button variant="ghost" size="icon">
-              <Menu className="h-7 w-7 text-white" /> {/* ÍCONE ligeiramente maior */}
+              <Menu className="h-6 w-6 text-white" />
             </Button>
           </SheetTrigger>
 
           <SheetContent side="right" className="w-[300px]">
-            <nav className="flex flex-col space-y-5 mt-10">
+            <nav className="flex flex-col space-y-4 mt-8">
               {menuItems.map((item) => (
                 <Link
                   key={item.title}
                   to={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-xl font-semibold text-foreground hover:text-primary transition-colors" // MOBILE MAIOR
+                  className="text-lg font-medium text-foreground hover:text-primary transition-colors"
                 >
                   {item.title}
                 </Link>
@@ -73,7 +73,7 @@ const Header = () => {
       </div>
 
       {/* Espaço extra para separar o hero do header fixo */}
-      <div className="h-24"></div>
+      <div className="h-20"></div>
     </header>
   );
 };
