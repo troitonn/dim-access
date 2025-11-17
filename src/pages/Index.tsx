@@ -1,12 +1,31 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Hero from "@/components/Hero";
+import IntroSection from "@/components/IntroSection";
+import BenefitsCards from "@/components/BenefitsCards";
+import DetailedBenefits from "@/components/DetailedBenefits";
+import CTASection from "@/components/CTASection";
+import HowItWorks from "@/components/HowItWorks";
+import Plans from "@/components/Plans";
+import Testimonials from "@/components/Testimonials";
+import WhyChoose from "@/components/WhyChoose";
+import AboutClinics from "@/components/AboutClinics";
+import ContactForm from "@/components/ContactForm";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen">
+      <Hero />
+      <IntroSection />
+      <BenefitsCards />
+      <DetailedBenefits />
+      <CTASection />
+      <HowItWorks />
+      <Plans />
+      <Testimonials />
+      <WhyChoose />
+      <AboutClinics />
+      <ContactForm />
+      <Footer />
     </div>
   );
 };
