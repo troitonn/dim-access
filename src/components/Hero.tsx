@@ -5,58 +5,68 @@ import heroPerson from "@/assets/hero-person.png";
 
 const Hero = () => {
   const whatsappNumber = "5511983730500";
-  const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre o DIM+ Saúde.");
+  const whatsappMessage = encodeURIComponent(
+    "Olá! Gostaria de saber mais sobre o DIM+ Saúde."
+  );
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-24 md:pt-32">
       {/* Background gradient */}
       <div className="absolute inset-0 gradient-primary opacity-90 z-0" />
-      
+
       {/* Background image with overlay */}
-      <div 
+      <div
         className="absolute inset-0 z-0 opacity-20"
         style={{
           backgroundImage: `url(${heroDoctor})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       />
 
-      {/* Hero Person Image - Overlaying everything */}
+      {/* Hero Person Image */}
       <div className="absolute right-0 bottom-0 z-20 h-full w-full md:w-1/2 flex items-end justify-end pointer-events-none">
-        <img 
-          src={heroPerson} 
-          alt="Profissional DIM+ Saúde" 
+        <img
+          src={heroPerson}
+          alt="Profissional DIM+ Saúde"
           className="h-[90%] w-auto object-contain"
         />
       </div>
 
       {/* Animated circles */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-primary-light/20 rounded-full blur-3xl animate-float" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
+      <div
+        className="absolute bottom-20 right-10 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-float"
+        style={{ animationDelay: "1s" }}
+      />
 
       <div className="container mx-auto px-4 z-10 relative">
-        <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in-up">
-          <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
+        <div className="max-w-4xl mx-auto text-center space-y-6 animate-fade-in-up">
+
+          {/* Título */}
+          <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight tracking-tight">
             DIM<span className="text-primary-light">+</span> Saúde
           </h1>
-          
-          <p className="text-xl md:text-2xl text-white/90 font-medium">
+
+          {/* Subtítulo */}
+          <p className="text-xl md:text-2xl text-white/90 font-medium tracking-tight">
             Seu cartão de acesso à saúde
           </p>
-          
-          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
+
+          {/* Descrição */}
+          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-snug">
             Uma forma mais prática e econômica de cuidar da sua saúde e da saúde da sua família
           </p>
 
+          {/* Botão azul escuro */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-            <Button 
-              variant="float" 
+            <Button
+              variant="float"
               size="lg"
-              className="bg-white text-primary hover:bg-white/90 shadow-hover"
+              className="bg-[#0A2A43] text-white hover:bg-[#091f33] shadow-hover"
               asChild
             >
-              <a 
+              <a
                 href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -67,24 +77,28 @@ const Hero = () => {
             </Button>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-12">
+          {/* Cards em QUADRO */}
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-4 pt-10 max-w-xl mx-auto border-2 border-white/20 rounded-3xl p-4 backdrop-blur-sm bg-white/5">
             {[
               { value: "Clínico geral", label: "ilimitado" },
               { value: "Telemedicina", label: "para titular" },
               { value: "Até 5", label: "dependentes" },
               { value: "Descontos", label: "em exames e farmácias" },
             ].map((stat, index) => (
-              <div 
+              <div
                 key={index}
-                className="glassmorphism rounded-2xl p-6 backdrop-blur-md"
-                style={{ animationDelay: `${index * 0.2}s` }}
+                className="rounded-xl p-6 bg-white/10 border border-white/20 shadow-md backdrop-blur-md text-center transition hover:bg-white/20"
               >
-                <div className="text-3xl md:text-4xl font-bold text-primary-dark">{stat.value}</div>
-                <div className="text-primary-dark/90 mt-1">{stat.label}</div>
+                <div className="text-2xl md:text-3xl font-bold text-white">
+                  {stat.value}
+                </div>
+                <div className="text-white/80 mt-1 text-sm md:text-base">
+                  {stat.label}
+                </div>
               </div>
             ))}
           </div>
+
         </div>
       </div>
     </section>
