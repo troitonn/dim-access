@@ -22,7 +22,6 @@ const Hero = () => {
         }}
       />
 
-      {/* Elementos decorativos */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-primary-light/20 rounded-full blur-3xl animate-float" />
       <div
         className="absolute bottom-20 right-10 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-float"
@@ -42,9 +41,8 @@ const Hero = () => {
           </div>
 
           {/* BLOCO DE TEXTO + BOTÃO + CARDS */}
-          <div className="flex flex-col items-center text-center space-y-4 md:ml-[-48px]">
+          <div className="flex flex-col items-center text-center space-y-4 md:ml-[-96px]">
 
-            {/* Título / subtítulo / texto — agora mais próximos */}
             <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight tracking-tight">
               DIM<span className="text-primary-light">+</span> Saúde
             </h1>
@@ -76,8 +74,8 @@ const Hero = () => {
               </Button>
             </div>
 
-            {/* Cards em quadro — corrigido para não cortar */}
-            <div className="grid grid-cols-2 gap-4 pt-4 border-2 border-white/20 rounded-3xl p-4 backdrop-blur-sm bg-white/5 w-full max-w-sm">
+            {/* Cards com ESPAÇAMENTO À ESQUERDA */}
+            <div className="grid grid-cols-2 gap-4 pt-4 border-2 border-white/20 rounded-3xl p-4 pl-6 backdrop-blur-sm bg-white/5 w-full max-w-sm">
               {[
                 { value: "Clínico geral", label: "ilimitado" },
                 { value: "Telemedicina", label: "para titular" },
