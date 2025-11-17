@@ -11,10 +11,8 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-24 md:pt-32">
-      {/* Background gradient */}
       <div className="absolute inset-0 gradient-primary opacity-90 z-0" />
 
-      {/* Background image with overlay */}
       <div
         className="absolute inset-0 z-0 opacity-20"
         style={{
@@ -24,7 +22,7 @@ const Hero = () => {
         }}
       />
 
-      {/* Círculos animados */}
+      {/* Elementos decorativos */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-primary-light/20 rounded-full blur-3xl animate-float" />
       <div
         className="absolute bottom-20 right-10 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-float"
@@ -43,26 +41,24 @@ const Hero = () => {
             />
           </div>
 
-          {/* Conteúdo à direita */}
-          <div className="space-y-6 text-center animate-fade-in-up">
+          {/* BLOCO DE TEXTO + BOTÃO + CARDS */}
+          <div className="flex flex-col items-center text-center space-y-4 md:ml-[-48px]">
 
-            {/* Título */}
-            <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight">
+            {/* Título / subtítulo / texto — agora mais próximos */}
+            <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight tracking-tight">
               DIM<span className="text-primary-light">+</span> Saúde
             </h1>
 
-            {/* Subtítulo */}
-            <p className="text-xl md:text-2xl text-white/90 font-medium">
+            <p className="text-xl md:text-2xl text-white/90 font-medium leading-snug -mt-2">
               Seu cartão de acesso à saúde
             </p>
 
-            {/* Descrição */}
-            <p className="text-lg md:text-xl text-white/80 leading-snug max-w-md">
+            <p className="text-lg md:text-xl text-white/80 max-w-md leading-snug -mt-2">
               Uma forma mais prática e econômica de cuidar da sua saúde e da saúde da sua família.
             </p>
 
-            {/* Botão azul escuro */}
-            <div className="pt-2">
+            {/* Botão */}
+            <div className="pt-1">
               <Button
                 variant="float"
                 size="lg"
@@ -80,8 +76,8 @@ const Hero = () => {
               </Button>
             </div>
 
-            {/* Cards em QUADRO */}
-            <div className="grid grid-cols-2 gap-4 pt-6 max-w-md border-2 border-white/20 rounded-3xl p-4 backdrop-blur-sm bg-white/5">
+            {/* Cards em quadro — corrigido para não cortar */}
+            <div className="grid grid-cols-2 gap-4 pt-4 border-2 border-white/20 rounded-3xl p-4 backdrop-blur-sm bg-white/5 w-full max-w-sm">
               {[
                 { value: "Clínico geral", label: "ilimitado" },
                 { value: "Telemedicina", label: "para titular" },
