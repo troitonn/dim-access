@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
 import heroDoctor from "@/assets/hero-doctor.jpg";
+import heroPerson from "@/assets/hero-person.png";
 
 const Hero = () => {
   const whatsappNumber = "5511983730500";
@@ -20,6 +21,15 @@ const Hero = () => {
           backgroundPosition: 'center',
         }}
       />
+
+      {/* Hero Person Image - Overlaying everything */}
+      <div className="absolute right-0 bottom-0 z-20 h-full w-full md:w-1/2 flex items-end justify-end pointer-events-none">
+        <img 
+          src={heroPerson} 
+          alt="Profissional DIM+ Saúde" 
+          className="h-[90%] w-auto object-contain"
+        />
+      </div>
 
       {/* Animated circles */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-primary-light/20 rounded-full blur-3xl animate-float" />
@@ -58,11 +68,12 @@ const Hero = () => {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-12">
             {[
-              { value: "R$ 79,90", label: "por mês" },
-              { value: "50mil+", label: "clientes" },
-              { value: "Sem", label: "carência" },
+              { value: "Clínico geral", label: "ilimitado" },
+              { value: "Telemedicina", label: "para titular" },
+              { value: "Até 5", label: "dependentes" },
+              { value: "Descontos", label: "em exames e farmácias" },
             ].map((stat, index) => (
               <div 
                 key={index}
