@@ -30,7 +30,7 @@ const Header = () => {
           <img
             src={logo}
             alt="Dim+ Saúde"
-            className="h-14 w-auto object-contain"   // AUMENTADO
+            className="h-18 w-auto object-contain"   // AUMENTADO
           />
         </Link>
 
