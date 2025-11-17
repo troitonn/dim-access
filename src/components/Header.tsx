@@ -1,16 +1,11 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Link } from "react-router-dom";
+
+// Import da logo
+import logo from "../assets/logo.png";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -26,12 +21,17 @@ const Header = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
+    <header className="fixed top-0 left-0 w-full z-50">
+      <div className="container flex h-20 items-center justify-between 
+        bg-transparent backdrop-blur-sm">
+        
+        {/* LOGO */}
         <Link to="/" className="flex items-center space-x-2">
-          <span className="text-2xl font-bold text-primary">
-            DIM<span className="text-primary-light">+</span> Saúde
-          </span>
+          <img
+            src={logo}
+            alt="Dim+ Saúde"
+            className="h-10 w-auto object-contain"
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -40,7 +40,7 @@ const Header = () => {
             <Link
               key={item.title}
               to={item.href}
-              className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+              className="text-sm font-medium text-white/90 hover:text-white transition-colors"
             >
               {item.title}
             </Link>
@@ -51,9 +51,10 @@ const Header = () => {
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
           <SheetTrigger asChild className="md:hidden">
             <Button variant="ghost" size="icon">
-              <Menu className="h-6 w-6" />
+              <Menu className="h-6 w-6 text-white" />
             </Button>
           </SheetTrigger>
+
           <SheetContent side="right" className="w-[300px]">
             <nav className="flex flex-col space-y-4 mt-8">
               {menuItems.map((item) => (
@@ -70,6 +71,9 @@ const Header = () => {
           </SheetContent>
         </Sheet>
       </div>
+
+      {/* Espaço extra para separar o hero do header fixo */}
+      <div className="h-20"></div>
     </header>
   );
 };
