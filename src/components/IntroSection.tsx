@@ -1,23 +1,29 @@
 import { Button } from "@/components/ui/button";
 import { Apple, Smartphone } from "lucide-react";
+import appImage from "../assets/app.png";
 
 const AppDownload = () => {
   return (
-    <section className="py-20 gradient-secondary">
-      <div className="container mx-auto px-4">
-        <div className="text-center space-y-6 max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-white">
-            Baixe nosso aplicativo
+    <section className="py-20 bg-white">
+      <div className="container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
+
+        {/* --- LADO ESQUERDO: TEXTO + BOTÕES --- */}
+        <div className="space-y-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-primary-dark leading-tight">
+            Baixe o aplicativo DIM+ Saúde
           </h2>
-          <p className="text-xl text-white/90">
-            Tenha acesso a todos os benefícios do DIM+ Saúde na palma da sua mão
+
+          <p className="text-lg text-gray-700 max-w-lg">
+            Tenha acesso a carteirinha digital, rede credenciada, autorizações,
+            boletos, área do cliente, suporte e muito mais — tudo na palma da sua mão.
+            Rápido, prático e seguro.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
+          <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <Button
               variant="float"
               size="lg"
-              className="bg-white text-primary hover:bg-white/90 w-full sm:w-auto"
+              className="bg-primary-dark text-white hover:bg-primary/80 w-full sm:w-auto shadow-lg"
               asChild
             >
               <a
@@ -33,7 +39,7 @@ const AppDownload = () => {
             <Button
               variant="float"
               size="lg"
-              className="bg-white text-primary hover:bg-white/90 w-full sm:w-auto"
+              className="bg-primary-dark text-white hover:bg-primary/80 w-full sm:w-auto shadow-lg"
               asChild
             >
               <a
@@ -46,6 +52,15 @@ const AppDownload = () => {
               </a>
             </Button>
           </div>
+        </div>
+
+        {/* --- LADO DIREITO: IMAGEM DO APP --- */}
+        <div className="flex justify-center md:justify-end">
+          <img
+            src={appImage}
+            alt="App DIM+ Saúde"
+            className="w-[85%] max-w-md drop-shadow-2xl rounded-xl"
+          />
         </div>
       </div>
     </section>
