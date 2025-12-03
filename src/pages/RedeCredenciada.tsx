@@ -88,13 +88,12 @@ const RedeCredenciada = () => {
             </h2>
 
             <div className="rounded-3xl overflow-hidden shadow-2xl backdrop-blur-2xl border border-white/40 bg-white/30">
-              <iframe
-                src="https://www.google.com/maps/d/embed?mid=1b73YKIA1HdgU9d8ypAjGWjrpx_tF8n8&ehbc=2E312F"
-                className="w-full h-[600px]"
-                loading="lazy"
-                allowFullScreen
-                style={{ border: 0 }}
-              ></iframe>
+            <iframe 
+              src="https://www.google.com/maps/d/u/0/embed?mid=1b73YKIA1HdgU9d8ypAjGWjrpx_tF8n8&output=embed"
+              width="100%" 
+              height="500" 
+              style="border:0;">
+            </iframe>
             </div>
 
             {/* LISTA DE UNIDADES */}
