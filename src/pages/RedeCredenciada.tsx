@@ -1,28 +1,26 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Building2, Hospital, FlaskConical, Stethoscope, MapPin, Navigation } from "lucide-react";
+import MapaDimeg from "@/components/MapaDimeg"; // IMPORTANTE
 
 const unidades = [
   {
     nome: "Unidade Osasco",
     endereco: "Rua João Crudo, 120 – Centro, Osasco",
     desc: "Localizada em um dos maiores centros comerciais de SP, próxima à CPTM, Rua Antônio Agu e três Shoppings.",
-    rota: "https://www.google.com/maps/dir/?api=1&destination=Rua+João+Crudo,+120+Osasco",
-    mapa: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.9829855859443!2d-46.782644490057365!3d-23.53311436046493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ceff0f3efeee77%3A0x7de906595c267065!2sDIMEG!5e0!3m2!1spt-BR!2sbr!4v1764766686072!5m2!1spt-BR!2sbr"
+    rota: "https://www.google.com/maps/dir/?api=1&destination=Rua+João+Crudo,+120+Osasco"
   },
   {
     nome: "Unidade Itapevi",
     endereco: "Rua Leopoldina de Camargo, 190 – Centro, Itapevi",
     desc: "Há mais de 16 anos referência em saúde na região, estrutura moderna e localização estratégica.",
-    rota: "https://www.google.com/maps/dir/?api=1&destination=Rua+Leopoldina+de+Camargo,+190+Itapevi",
-    mapa: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.618009642601!2d-46.935491290056795!3d-23.546237660946492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf068f0cb679e5%3A0xc78ad136e42820c5!2sCl%C3%ADnica%20Dimeg%20Itapevi!5e0!3m2!1spt-BR!2sbr!4v1764766774559!5m2!1spt-BR!2sbr"
+    rota: "https://www.google.com/maps/dir/?api=1&destination=Rua+Leopoldina+de+Camargo,+190+Itapevi"
   },
   {
     nome: "Unidade Cajamar",
     endereco: "Rua Silvério Augusto Tavares, 5 – Polvilho, Cajamar",
     desc: "Localizada no centro comercial, próxima à Natura, SKF e Marabraz. Estrutura ampla e moderna.",
-    rota: "https://www.google.com/maps/dir/?api=1&destination=Rua+Silvério+Augusto+Tavares,+5+Cajamar",
-    mapa: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3661.408741800799!2d-46.84087859006277!3d-23.409597555944366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf1d19a035dca7%3A0xc64660baa9dd558f!2sCl%C3%ADnica%20Dimeg%20Cajamar!5e0!3m2!1spt-BR!2sbr!4v1764766805723!5m2!1spt-BR!2sbr"
+    rota: "https://www.google.com/maps/dir/?api=1&destination=Rua+Silvério+Augusto+Tavares,+5+Cajamar"
   }
 ];
 
@@ -43,7 +41,7 @@ const RedeCredenciada = () => {
         </div>
       </section>
 
-      {/* CARDS DE CATEGORIAS */}
+      {/* CARDS */}
       <section className="py-20">
         <div className="container mx-auto px-4">
 
@@ -83,7 +81,7 @@ const RedeCredenciada = () => {
 
           </div>
 
-          {/* MAPA APPLE-LIKE */}
+          {/* MAPA INTERATIVO REAL */}
           <div className="mt-20">
             <h2 className="text-3xl font-bold text-primary-dark flex items-center gap-3 mb-6">
               <MapPin className="w-7 h-7 text-primary" />
@@ -91,15 +89,7 @@ const RedeCredenciada = () => {
             </h2>
 
             <div className="rounded-3xl overflow-hidden shadow-2xl backdrop-blur-2xl border border-white/40 bg-white/30">
-              <div className="w-full h-[600px]">
-                {/* MAPA GRANDE */}
-                <iframe
-                  src="https://www.google.com/maps/d/embed?mid=1qE8A6bdqZX-APPLE-EXEMPLO" 
-                  className="w-full h-full"
-                  loading="lazy"
-                  style={{ border: 0 }}
-                ></iframe>
-              </div>
+              <MapaDimeg /> {/* ESTÁ AQUI O MAPA REAL */}
             </div>
 
             {/* LISTA DE UNIDADES */}
