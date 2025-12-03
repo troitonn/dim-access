@@ -1,78 +1,131 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Building2, Hospital, FlaskConical, Stethoscope, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
+import { useEffect } from "react";
+
+// Apple-like glow marker style
+const markerStyle = {
+  background: "linear-gradient(135deg, #00c6fb, #005bea)",
+  width: "18px",
+  height: "18px",
+  borderRadius: "50%",
+  boxShadow: "0 0 18px rgba(0, 140, 255, 0.9)",
+  border: "3px solid white",
+};
+
+const units = [
+  {
+    name: "Unidade Osasco",
+    address: "Rua João Crudo, 120 – Centro, Osasco",
+    lat: -23.5315621,
+    lng: -46.7919575,
+  },
+  {
+    name: "Unidade Itapevi",
+    address: "Rua Leopoldina de Camargo, 190 – Centro, Itapevi",
+    lat: -23.551527,
+    lng: -46.934444,
+  },
+  {
+    name: "Unidade Cajamar",
+    address: "Rua Silvério Augusto Tavares, 5 – Polvilho, Cajamar",
+    lat: -23.353736,
+    lng: -46.806626,
+  },
+];
 
 const RedeCredenciada = () => {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=marker`;
+    script.async = true;
+    script.onload = initMap;
+    document.body.appendChild(script);
+  }, []);
+
+  function initMap() {
+    const map = new window.google.maps.Map(document.getElementById("appleMap"), {
+      center: { lat: -23.50, lng: -46.85 },
+      zoom: 11,
+      disableDefaultUI: true,
+      styles: [
+        {
+          featureType: "all",
+          elementType: "geometry.fill",
+          stylers: [{ weight: "2.00" }],
+        },
+        {
+          featureType: "all",
+          elementType: "labels.text.fill",
+          stylers: [{ color: "#727272" }],
+        },
+        {
+          featureType: "landscape",
+          elementType: "all",
+          stylers: [{ color: "#f5f5f5" }],
+        },
+        {
+          featureType: "road",
+          elementType: "all",
+          stylers: [{ saturation: -100 }, { lightness: 45 }],
+        },
+        {
+          featureType: "water",
+          elementType: "geometry.fill",
+          stylers: [{ color: "#d6eaff" }],
+        },
+      ],
+    });
+
+    units.forEach((unit) => {
+      const markerDiv = document.createElement("div");
+      Object.assign(markerDiv.style, markerStyle);
+
+      const marker = new window.google.maps.marker.AdvancedMarkerElement({
+        map,
+        position: { lat: unit.lat, lng: unit.lng },
+        content: markerDiv,
+      });
+
+      const infowindow = new window.google.maps.InfoWindow({
+        content: `
+          <div style="padding: 8px 12px; border-radius: 12px; backdrop-filter: blur(10px); background: rgba(255,255,255,0.7);">
+            <h3 style="font-size: 16px; font-weight: bold; margin: 0;">${unit.name}</h3>
+            <p style="margin: 0; font-size: 13px; color: #444;">${unit.address}</p>
+          </div>
+        `,
+      });
+
+      marker.addListener("click", () => {
+        infowindow.open({ anchor: marker, map });
+      });
+    });
+  }
+
   return (
     <div className="min-h-screen">
       <Header />
-      
+
       <section className="py-20 gradient-primary">
-        <div className="container mx-auto px-4">
-          <h1 className="text-5xl md:text-6xl font-bold text-white text-center mb-6">
-            Rede Credenciada
-          </h1>
-          <p className="text-xl text-white/90 text-center max-w-3xl mx-auto">
-            Conheça onde você pode usar seu cartão DIM+ Saúde
-          </p>
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-5xl md:text-6xl font-bold text-white">Rede Credenciada</h1>
+          <p className="text-xl text-white/90 mt-4">Veja nossas unidades no mapa interativo</p>
         </div>
       </section>
 
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="card-elevated rounded-2xl p-8 text-center space-y-4">
-              <div className="w-16 h-16 mx-auto gradient-primary rounded-full flex items-center justify-center">
-                <Building2 className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-primary-dark">Clínicas Próprias</h3>
-              <p className="text-foreground/70">
-                Atendimento completo nas clínicas DIMEG
-              </p>
-            </div>
-
-            <div className="card-elevated rounded-2xl p-8 text-center space-y-4">
-              <div className="w-16 h-16 mx-auto gradient-primary rounded-full flex items-center justify-center">
-                <Hospital className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-primary-dark">Clínicas Conveniadas</h3>
-              <p className="text-foreground/70">
-                Ampla rede de parceiros credenciados
-              </p>
-            </div>
-
-            <div className="card-elevated rounded-2xl p-8 text-center space-y-4">
-              <div className="w-16 h-16 mx-auto gradient-primary rounded-full flex items-center justify-center">
-                <FlaskConical className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-primary-dark">Laboratórios</h3>
-              <p className="text-foreground/70">
-                Exames com até 70% de desconto
-              </p>
-            </div>
-
-            <div className="card-elevated rounded-2xl p-8 text-center space-y-4">
-              <div className="w-16 h-16 mx-auto gradient-primary rounded-full flex items-center justify-center">
-                <Stethoscope className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-primary-dark">Especialidades</h3>
-              <p className="text-foreground/70">
-                Diversas especialidades médicas disponíveis
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-16 card-elevated rounded-2xl p-8">
-            <div className="flex items-center gap-4 mb-6">
+          <div className="card-elevated rounded-2xl p-6">
+            <div className="flex items-center gap-3 mb-6">
               <MapPin className="w-8 h-8 text-primary" />
-              <h2 className="text-3xl font-bold text-primary-dark">Encontre uma unidade</h2>
+              <h2 className="text-3xl font-bold text-primary-dark">Mapa Interativo</h2>
             </div>
-            <p className="text-foreground/70 mb-8">
-              Entre em contato conosco para saber quais unidades estão mais próximas de você.
-            </p>
-            <div className="aspect-video bg-muted rounded-xl flex items-center justify-center">
-              <p className="text-muted-foreground">Mapa interativo em breve</p>
-            </div>
+
+            <div
+              id="appleMap"
+              className="w-full h-[600px] rounded-2xl shadow-xl"
+              style={{ overflow: "hidden" }}
+            ></div>
           </div>
         </div>
       </section>
