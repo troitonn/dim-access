@@ -10,13 +10,13 @@ const Testimonials = () => {
     },
     {
       name: "João Santos",
-      location: "Rio de Janeiro, RJ",
+      location: "Osasco, SP",
       text: "Excelente custo-benefício. Uso para toda a família e economizo muito nas consultas e exames de rotina.",
       rating: 5,
     },
     {
       name: "Ana Oliveira",
-      location: "Belo Horizonte, MG",
+      location: "Osasco, SP",
       text: "A telemedicina é muito prática! Já fiz várias consultas online e o atendimento foi sempre ótimo.",
       rating: 5,
     },
@@ -30,7 +30,7 @@ const Testimonials = () => {
             O que nossos clientes dizem
           </h2>
           <p className="text-xl text-muted-foreground">
-            Milhares de brasileiros já confiam no DIM+ Saúde
+            Brasileiros já confiam no DIM+ Saúde
           </p>
         </div>
 
