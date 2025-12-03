@@ -16,7 +16,7 @@ const Footer = () => {
           <div>
             <h4 className="font-bold mb-4">Contato</h4>
             <ul className="space-y-2 text-sm text-secondary-foreground/80">
-              <li>(11) 2730-0500</li>
+              <li>+55 11 99519-3094</li>
               <li>contato@dimeg.com.br</li>
             </ul>
           </div>
