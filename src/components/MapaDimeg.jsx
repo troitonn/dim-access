@@ -1,53 +1,20 @@
-import { useEffect } from "react";
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
-
-// Correção dos ícones no Vite
-delete L.Icon.Default.prototype._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: new URL("leaflet/dist/images/marker-icon-2x.png", import.meta.url).href,
-  iconUrl: new URL("leaflet/dist/images/marker-icon.png", import.meta.url).href,
-  shadowUrl: new URL("leaflet/dist/images/marker-shadow.png", import.meta.url).href,
-});
+import React from "react";
 
 const MapaDimeg = () => {
-  useEffect(() => {
-    const map = L.map("mapa-dimeg").setView([-23.5329, -46.7911], 11);
-
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 18,
-    }).addTo(map);
-
-    const unidades = [
-      {
-        nome: "Unidade Osasco",
-        endereco: "Rua João Crudo, 120 – Centro, Osasco",
-        coord: [-23.5329, -46.7911],
-      },
-      {
-        nome: "Unidade Itapevi",
-        endereco: "Rua Leopoldina de Camargo, 190 – Centro, Itapevi",
-        coord: [-23.5487, -46.9349],
-      },
-      {
-        nome: "Unidade Cajamar",
-        endereco: "Rua Silvério Augusto Tavares, 5 – Polvilho, Cajamar",
-        coord: [-23.3607, -46.8767],
-      },
-    ];
-
-    unidades.forEach((u) => {
-      L.marker(u.coord)
-        .addTo(map)
-        .bindPopup(`<b>${u.nome}</b><br>${u.endereco}`);
-    });
-  }, []);
-
   return (
-    <div
-      id="mapa-dimeg"
-      style={{ width: "100%", height: "500px", borderRadius: "20px" }}
-    ></div>
+    <div className="w-full rounded-2xl overflow-hidden shadow-xl border border-white/10 backdrop-blur-md bg-white/5">
+      <iframe
+        title="Mapa Dimeg"
+        loading="lazy"
+        allowFullScreen
+        referrerPolicy="no-referrer-when-downgrade"
+        className="w-full h-[450px] md:h-[550px]"
+        style={{ border: 0 }}
+        src={
+          "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.9966135319433!2d-46.79092752563374!3d-23.53293906043086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ceffef9b4adbbb%3A0xefdfbcde519e5105!2sOsasco%20-%20Centro!5e0!3m2!1spt-BR!2sbr!4v1700000000000"
+        }
+      ></iframe>
+    </div>
   );
 };
 
