@@ -11,36 +11,36 @@ const AppDownload = () => {
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-primary-light/10 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-6 relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center md:items-center gap-6">
 
           {/* LADO ESQUERDO — TEXTO */}
-          <div className="space-y-6 animate-fade-in-up text-left">
+          <div className="space-y-6 animate-fade-in-up text-left md:text-center md:mx-auto">
 
             <h2 className="text-4xl md:text-5xl font-bold text-primary-dark leading-tight">
               Baixe o aplicativo DIM<span className="text-primary-light">+</span> Saúde
             </h2>
 
-            <p className="text-lg md:text-xl text-gray-600 max-w-md leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-600 max-w-md mx-auto leading-relaxed">
               Acesse consultas, telemedicina, carteirinha digital, rede credenciada
               e diversos benefícios diretamente pelo seu celular.
             </p>
 
             {/* BENEFÍCIOS */}
-            <div className="space-y-3 text-gray-700">
+            <div className="space-y-3 text-gray-700 md:mx-auto w-fit">
               {[
                 "Carteirinha Digital sempre disponível",
                 "Telemedicina integrada",
                 "Rede credenciada com geolocalização",
                 "Praticidade e rapidez no atendimento",
               ].map((txt, i) => (
-                <p key={i} className="flex items-center gap-2 text-base">
+                <p key={i} className="flex items-center gap-2 text-base justify-start md:justify-center">
                   <CheckCircle className="text-primary h-5 w-5" /> {txt}
                 </p>
               ))}
             </div>
 
-            {/* BOTÕES — ESTILO MAIS VIVO, REALMENTE BOTÃO */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            {/* BOTÕES */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
               
               {/* GOOGLE PLAY */}
               <a
