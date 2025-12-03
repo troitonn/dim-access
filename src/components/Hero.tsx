@@ -4,7 +4,7 @@ import heroDoctor from "@/assets/hero-doctor.jpg";
 import heroPerson from "@/assets/hero-person.png";
 
 const Hero = () => {
-  const whatsappNumber = "5511995193094";
+  const whatsappNumber = "5511983730500";
   const whatsappMessage = encodeURIComponent(
     "Olá! Gostaria de saber mais sobre o DIM+ Saúde."
   );

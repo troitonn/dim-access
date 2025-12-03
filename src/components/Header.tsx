@@ -17,6 +17,7 @@ const Header = () => {
     { title: "FAQ", href: "/faq" },
     { title: "Quem Somos", href: "/quem-somos" },
     { title: "Seja um Parceiro", href: "/seja-parceiro" },
+    { title: "Área do Cliente", href: "/area-cliente" },
   ];
 
   return (
@@ -29,12 +30,12 @@ const Header = () => {
           <img
             src={logo}
             alt="Dim+ Saúde"
-            className="h-14 w-auto object-contain"
+            className="h-10 w-auto object-contain"
           />
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-6">
+        <nav className="hidden md:flex items-center space-x-6">
           {menuItems.map((item) => (
             <Link
               key={item.title}
@@ -44,14 +45,6 @@ const Header = () => {
               {item.title}
             </Link>
           ))}
-          <a
-            href="https://dimeg.clouddivision.com.br/AliancaAppNet2/Site/site/paginaInicial"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-medium text-white/90 hover:text-white transition-colors"
-          >
-            Área do Cliente
-          </a>
         </nav>
 
         {/* Mobile Navigation */}
