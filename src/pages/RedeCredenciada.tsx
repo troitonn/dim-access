@@ -80,7 +80,7 @@ const RedeCredenciada = () => {
 
           </div>
 
-          {/* MAPA GOOGLE MY MAPS */}
+          {/* MAPA */}
           <div className="mt-20">
             <h2 className="text-3xl font-bold text-primary-dark flex items-center gap-3 mb-6">
               <MapPin className="w-7 h-7 text-primary" />
@@ -88,12 +88,14 @@ const RedeCredenciada = () => {
             </h2>
 
             <div className="rounded-3xl overflow-hidden shadow-2xl backdrop-blur-2xl border border-white/40 bg-white/30">
-            <iframe 
-              src="https://www.google.com/maps/d/u/0/embed?mid=1b73YKIA1HdgU9d8ypAjGWjrpx_tF8n8&output=embed"
-              width="100%" 
-              height="500" 
-              style="border:0;">
-            </iframe>
+              <iframe
+                src="https://www.google.com/maps/d/u/0/embed?mid=1b73YKIA1HdgU9d8ypAjGWjrpx_tF8n8&output=embed"
+                width="100%"
+                height="500"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+              />
             </div>
 
             {/* LISTA DE UNIDADES */}
