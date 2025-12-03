@@ -11,8 +11,8 @@ const HowItWorks = () => {
     {
       number: "2",
       icon: Mail,
-      title: "Receba seu cartão",
-      description: "Após a contratação, você receberá seu cartão DIM+ Saúde rapidamente pelo correio.",
+      title: "Retire seu cartão",
+      description: "Após a contratação, você poderá retirar seu cartão diretamente em uma de nossas unidades.",
     },
     {
       number: "3",
