@@ -9,6 +9,7 @@ const Plans = () => {
       name: "DIM+ BÁSICO",
       price: "39,90",
       adhesionFee: "29,90",
+      link: "https://dimeg.clouddivision.com.br/AliancaAppNet2/Site/autenticacao/login?t=AVII&d=site%2FautoContratacaoVII&plano=1&qtmaxdep=5&tpcontratacao=2&tpplano=S&smt=4326&VDPEC=S",
       features: [
         "1 Titular e até 5 Dependentes",
         "Até 60% de desconto em consultas eletivas",
@@ -24,6 +25,7 @@ const Plans = () => {
       name: "DIM+ BÁSICO PLUS",
       price: "79,90",
       adhesionFee: "29,90",
+      link: "https://dimeg.clouddivision.com.br/AliancaAppNet2/Site/autenticacao/login?t=AVII&d=site%2FautoContratacaoVII&plano=2&qtmaxdep=5&tpcontratacao=2&tpplano=S&smt=4326&VDPEC=S",
       features: [
         "1 Titular e até 5 Dependentes",
         "Pronto Atendimento ilimitado",
@@ -55,9 +57,9 @@ const Plans = () => {
             <div
               key={index}
               className={`relative rounded-3xl overflow-hidden ${
-                plan.highlighted 
-                  ? 'shadow-hover border-2 border-primary' 
-                  : 'shadow-card border border-border/50'
+                plan.highlighted
+                  ? "shadow-hover border-2 border-primary"
+                  : "shadow-card border border-border/50"
               }`}
             >
               {plan.highlighted && (
@@ -65,24 +67,42 @@ const Plans = () => {
                   MAIS POPULAR
                 </div>
               )}
-              
+
               <div className="bg-card p-8">
                 <h3 className="text-2xl font-bold text-foreground mb-2">
                   {plan.name}
                 </h3>
-                
+
                 <div className="mb-6">
                   <div className="flex items-baseline gap-2">
-                    <span className="text-muted-foreground">Taxa de adesão:</span>
-                    <span className="text-2xl font-bold text-primary">R$ {plan.adhesionFee}</span>
+                    <span className="text-muted-foreground">
+                      Taxa de adesão:
+                    </span>
+                    <span className="text-2xl font-bold text-primary">
+                      R$ {plan.adhesionFee}
+                    </span>
                   </div>
+
+                  {/* --- PREÇO COM DEGRADÊ --- */}
                   <div className="flex items-baseline gap-2 mt-2">
-                    <span className="text-4xl font-bold gradient-primary bg-clip-text text-transparent">
+                    <span
+                      className="
+                        text-4xl 
+                        font-bold 
+                        bg-gradient-to-r from-[#0057FF] to-[#00C2FF] 
+                        text-white 
+                        px-3 py-1 
+                        rounded-lg
+                      "
+                    >
                       R$ {plan.price}
                     </span>
                     <span className="text-muted-foreground">/mês</span>
                   </div>
-                  <p className="text-sm text-muted-foreground mt-1">12 parcelas</p>
+
+                  <p className="text-sm text-muted-foreground mt-1">
+                    12 parcelas
+                  </p>
                 </div>
 
                 <div className="space-y-3 mb-8">
@@ -98,14 +118,14 @@ const Plans = () => {
                   ))}
                 </div>
 
-                <Button 
+                <Button
                   variant={plan.highlighted ? "float" : "outline"}
                   size="lg"
                   className="w-full"
                   asChild
                 >
-                  <a 
-                    href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Olá! Gostaria de contratar o plano ${plan.name}`)}`}
+                  <a
+                    href={plan.link}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -119,7 +139,8 @@ const Plans = () => {
         </div>
 
         <p className="text-center text-muted-foreground mt-8 max-w-3xl mx-auto">
-          Ambos os planos oferecem acesso imediato após adesão e são perfeitos para quem busca saúde acessível sem burocracia.
+          Ambos os planos oferecem acesso imediato após adesão e são perfeitos
+          para quem busca saúde acessível sem burocracia.
         </p>
       </div>
     </section>
