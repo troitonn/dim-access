@@ -4,23 +4,20 @@ const unidades = [
   {
     nome: "Unidade Osasco",
     endereco: "Rua João Crudo, 120 – Centro, Osasco",
-    desc: "Localizada em um dos maiores centros comerciais do Estado de São Paulo, a poucos metros da CPTM e perto de três Shoppings. Atende como Pronto Atendimento 24h.",
+    desc: "Localizada em um dos maiores centros comerciais do Estado de São Paulo, a poucos metros da CPTM e shoppings.",
     rota: "https://www.google.com/maps/dir/?api=1&destination=Rua+João+Crudo,+120+Osasco",
-    mapa: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3659.589325299604!2d-46.777984!3d-23.470606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf0022912e2e1d%3A0x2a1e8e9c7097!2sRua%20Jo%C3%A3o%20Crudo%2C%20120%20-%20Centro%2C%20Osasco",
   },
   {
     nome: "Unidade Itapevi",
     endereco: "Rua Leopoldina de Camargo, 190 – Centro, Itapevi",
-    desc: "Há mais de 16 anos no mesmo endereço, referência em saúde na região. Bem localizada e com estrutura moderna, atrai novos clientes diariamente.",
+    desc: "Há mais de 16 anos no mesmo endereço, referência em saúde na região e estrutura moderna.",
     rota: "https://www.google.com/maps/dir/?api=1&destination=Rua+Leopoldina+de+Camargo,+190+Itapevi",
-    mapa: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.16539210818!2d-46.932359!3d-23.536089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf01fd1dd12d89%3A0x4c6ab5a2b1fb!2sRua%20Leopoldina%20de%20Camargo%2C%20190%20-%20Centro%2C%20Itapevi",
   },
   {
     nome: "Unidade Cajamar",
     endereco: "Rua Silvério Augusto Tavares, 5 – Polvilho, Cajamar",
-    desc: "No coração comercial da cidade, próxima a grandes indústrias como Natura, SKF e Marabraz. Ampla, moderna e com diversos serviços no mesmo local.",
+    desc: "Localização estratégica, próxima às principais indústrias e com estrutura ampla e moderna.",
     rota: "https://www.google.com/maps/dir/?api=1&destination=Rua+Silvério+Augusto+Tavares,+5+Cajamar",
-    mapa: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.093426087713!2d-46.872343!3d-23.613128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cf012763a1e707%3A0x610d8f3f1df2!2sR.+Silv%C3%A9rio+Augusto+Tavares%2C+5+-+Polvilho%2C+Cajamar",
   },
 ];
 
@@ -43,18 +40,33 @@ const UnidadesMapa = () => {
           {unidades.map((u, i) => (
             <div
               key={i}
-              className="bg-white shadow-xl rounded-3xl overflow-hidden border border-gray-200 hover:shadow-2xl transition group backdrop-blur-xl"
+              className="bg-white shadow-xl rounded-3xl overflow-hidden border border-gray-100 hover:shadow-2xl transition group"
             >
-              {/* MAPA INTERATIVO */}
-              <div className="w-full h-64">
-                <iframe
-                  src={u.mapa}
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen=""
-                  loading="lazy"
-                ></iframe>
+              
+              {/* MAPA PERSONALIZADO */}
+              <div className="relative w-full h-60 bg-gradient-to-br from-primary/20 to-primary-light/30 p-6 flex items-center justify-center">
+                
+                {/* Fundo estilizado em SVG */}
+                <svg
+                  className="absolute inset-0 opacity-20"
+                  viewBox="0 0 500 500"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M0 150 Q200 50 400 150 T800 150"
+                    fill="none"
+                    stroke="white"
+                    strokeWidth="40"
+                  />
+                  <circle cx="150" cy="300" r="80" fill="white" />
+                  <circle cx="350" cy="250" r="60" fill="white" />
+                  <rect x="200" y="100" width="120" height="120" fill="white" />
+                </svg>
+
+                {/* Ícone de localização central */}
+                <div className="relative z-10">
+                  <MapPin className="w-16 h-16 text-primary drop-shadow-xl" />
+                </div>
               </div>
 
               {/* CONTEÚDO */}
