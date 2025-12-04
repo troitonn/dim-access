@@ -3,6 +3,8 @@ import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Link } from "react-router-dom";
+
+// Import da logo
 import logo from "../assets/logo.png";
 
 const Header = () => {
@@ -14,22 +16,37 @@ const Header = () => {
     { title: "Planos", href: "/planos" },
     { title: "FAQ", href: "/faq" },
     { title: "Quem Somos", href: "/quem-somos" },
-    { title: "Seja um Parceiro", href: "/seja-parceiro" },
+
+    // WhatsApp direto
+    {
+      title: "Seja um Parceiro",
+      external: true,
+      href: "https://wa.me/5511995193094"
+    },
+
+    // Área do cliente externa
     {
       title: "Área do Cliente",
       external: true,
       href: "https://dimeg.clouddivision.com.br/AliancaAppNet2/Site/site"
-    },
+    }
   ];
 
   return (
     <header className="fixed top-0 left-0 w-full z-50">
-      <div className="container flex h-20 items-center justify-between bg-transparent backdrop-blur-sm">
+      <div className="container flex h-20 items-center justify-between 
+        bg-transparent backdrop-blur-sm">
         
+        {/* LOGO */}
         <Link to="/" className="flex items-center space-x-2">
-          <img src={logo} alt="Dim+ Saúde" className="h-10 w-auto object-contain" />
+          <img
+            src={logo}
+            alt="Dim+ Saúde"
+            className="h-10 w-auto object-contain"
+          />
         </Link>
 
+        {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
           {menuItems.map((item) =>
             item.external ? (
@@ -54,6 +71,7 @@ const Header = () => {
           )}
         </nav>
 
+        {/* Mobile Navigation */}
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
           <SheetTrigger asChild className="md:hidden">
             <Button variant="ghost" size="icon">
@@ -91,6 +109,7 @@ const Header = () => {
         </Sheet>
       </div>
 
+      {/* Espaço extra para separar o hero do header fixo */}
       <div className="h-20"></div>
     </header>
   );
