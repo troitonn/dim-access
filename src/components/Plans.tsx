@@ -2,8 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Check, MessageCircle } from "lucide-react";
 
 const Plans = () => {
-  const whatsappNumber = "5511983730500";
-
   const plans = [
     {
       name: "DIM+ BÁSICO",
@@ -56,19 +54,23 @@ const Plans = () => {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`relative rounded-3xl overflow-hidden ${
-                plan.highlighted
-                  ? "shadow-hover border-2 border-primary"
-                  : "shadow-card border border-border/50"
-              }`}
+              className={`
+                relative rounded-3xl p-[2px] overflow-hidden transition-all duration-300
+                ${
+                  plan.highlighted
+                    ? "bg-gradient-to-r from-blue-400 to-blue-700 shadow-xl"
+                    : "bg-border/50"
+                }
+              `}
             >
-              {plan.highlighted && (
-                <div className="absolute top-0 right-0 gradient-primary text-white px-6 py-2 text-sm font-bold rounded-bl-2xl">
-                  MAIS POPULAR
-                </div>
-              )}
+              {/* Fundo branco interno */}
+              <div className="rounded-3xl bg-card p-8 h-full relative z-10">
+                {plan.highlighted && (
+                  <div className="absolute top-0 right-0 bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 py-2 text-sm font-bold rounded-bl-2xl z-20 shadow-md">
+                    MAIS POPULAR
+                  </div>
+                )}
 
-              <div className="bg-card p-8">
                 <h3 className="text-2xl font-bold text-foreground mb-2">
                   {plan.name}
                 </h3>
@@ -83,16 +85,13 @@ const Plans = () => {
                     </span>
                   </div>
 
-                  {/* --- PREÇO COM DEGRADÊ --- */}
+                  {/* Preço destacado */}
                   <div className="flex items-baseline gap-2 mt-2">
                     <span
                       className="
-                        text-4xl 
-                        font-bold 
+                        text-4xl font-bold 
                         bg-gradient-to-r from-[#0057FF] to-[#00C2FF] 
-                        text-white 
-                        px-3 py-1 
-                        rounded-lg
+                        text-white px-3 py-1 rounded-lg shadow-sm
                       "
                     >
                       R$ {plan.price}
@@ -105,6 +104,7 @@ const Plans = () => {
                   </p>
                 </div>
 
+                {/* Features */}
                 <div className="space-y-3 mb-8">
                   {plan.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-start gap-3">
@@ -118,22 +118,28 @@ const Plans = () => {
                   ))}
                 </div>
 
+                {/* Botão */}
                 <Button
-                  variant={plan.highlighted ? "float" : "outline"}
+                  variant={plan.highlighted ? "default" : "outline"}
                   size="lg"
-                  className="w-full"
+                  className={`w-full ${
+                    plan.highlighted
+                      ? "bg-gradient-to-r from-blue-500 to-blue-700 text-white hover:opacity-90"
+                      : ""
+                  }`}
                   asChild
                 >
-                  <a
-                    href={plan.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href={plan.link} target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="mr-2" />
                     Quero este plano
                   </a>
                 </Button>
               </div>
+
+              {/* Brilho externo (glow) do destaque */}
+              {plan.highlighted && (
+                <div className="absolute inset-0 rounded-3xl bg-blue-500 blur-2xl opacity-20 z-0"></div>
+              )}
             </div>
           ))}
         </div>
