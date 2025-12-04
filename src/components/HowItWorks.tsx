@@ -34,22 +34,22 @@ const HowItWorks = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 relative">
           {steps.map((step, index) => {
             const Icon = step.icon;
             return (
               <div 
                 key={index}
-                className="relative"
+                className="relative z-10"
               >
-                {/* Connection line */}
+                {/* Connection line - CORRIGIDO */}
                 {index < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-20 left-[60%] w-[80%] h-0.5 bg-gradient-to-r from-primary to-primary-light" />
+                  <div className="hidden md:block absolute top-2 left-1/2 w-full h-0.5 bg-gradient-to-r from-primary to-primary-light -z-10" />
                 )}
                 
                 <div className="relative bg-card rounded-3xl p-8 text-center shadow-card hover:shadow-hover transition-smooth border border-border/50 hover:border-primary/50">
                   {/* Number badge */}
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full gradient-primary flex items-center justify-center text-white font-bold text-xl shadow-float">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full gradient-primary flex items-center justify-center text-white font-bold text-xl shadow-float z-20">
                     {step.number}
                   </div>
                   
