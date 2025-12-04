@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Menu, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -6,35 +6,12 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 
 const consultas = [
-  "Alergologia",
-  "Angiologia",
-  "Cardiologia",
-  "Dermatologia",
-  "Endocrinologia",
-  "Fonoaudiologia",
-  "Geriatria",
-  "Gastroenterologia",
-  "Ginecologia",
-  "Hebiatria",
-  "Hematologia",
-  "Infectologia",
-  "Infectologia Pediátrica",
-  "Massoterapia",
-  "Neurologia",
-  "Neurologia Pediátrica",
-  "Neurocirurgião",
-  "Nutrologia",
-  "Nutrição",
-  "Oftalmologia",
-  "Otorrinolaringologia",
-  "Ortopedia",
-  "Pediatria",
-  "Pneumologia",
-  "Pneumologia Pediátrica",
-  "Psiquiatria",
-  "Psicologia",
-  "Reumatologia",
-  "Urologia"
+  "Alergologia", "Angiologia", "Cardiologia", "Dermatologia", "Endocrinologia",
+  "Fonoaudiologia", "Geriatria", "Gastroenterologia", "Ginecologia", "Hebiatria",
+  "Hematologia", "Infectologia", "Infectologia Pediátrica", "Massoterapia",
+  "Neurologia", "Neurologia Pediátrica", "Neurocirurgião", "Nutrologia", "Nutrição",
+  "Oftalmologia", "Otorrinolaringologia", "Ortopedia", "Pediatria", "Pneumologia",
+  "Pneumologia Pediátrica", "Psiquiatria", "Psicologia", "Reumatologia", "Urologia"
 ];
 
 const toSlug = (text: string) =>
@@ -49,10 +26,28 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [consultasOpen, setConsultasOpen] = useState(false);
 
+  // Delay para fechar menu
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const openConsultas = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setConsultasOpen(true);
+  };
+
+  const closeConsultas = () => {
+    timeoutRef.current = setTimeout(() => {
+      setConsultasOpen(false);
+    }, 200); // delay de 200ms
+  };
+
   const menuItems = [
     { title: "Início", href: "/" },
     { title: "Rede Credenciada", href: "/rede-credenciada" },
     { title: "Planos", href: "/planos" },
+
+    // Consultas AGORA fica aqui após Planos
+    { title: "Consultas", dropdown: true },
+
     { title: "Quem Somos", href: "/quem-somos" },
 
     // WhatsApp direto
@@ -62,7 +57,7 @@ const Header = () => {
       href: "https://wa.me/5511995193094"
     },
 
-    // Área do Cliente externa
+    // Área do cliente externa
     {
       title: "Área do Cliente",
       external: true,
@@ -72,8 +67,7 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50">
-      <div className="container flex h-20 items-center justify-between 
-        bg-transparent backdrop-blur-sm">
+      <div className="container flex h-20 items-center justify-between bg-transparent backdrop-blur-sm">
 
         {/* LOGO */}
         <Link to="/" className="flex items-center space-x-2">
@@ -82,9 +76,39 @@ const Header = () => {
 
         {/* DESKTOP NAV */}
         <nav className="hidden md:flex items-center space-x-6">
-
           {menuItems.map((item) =>
-            item.external ? (
+            item.dropdown ? (
+              <div
+                key="consultas-menu"
+                className="relative text-sm font-medium text-white/90 hover:text-white cursor-pointer select-none"
+                onMouseEnter={openConsultas}
+                onMouseLeave={closeConsultas}
+              >
+                <div className="flex items-center gap-1">
+                  Consultas <ChevronDown size={16} />
+                </div>
+
+                {consultasOpen && (
+                  <div
+                    className="absolute left-0 mt-3 bg-white text-gray-900 rounded-md shadow-xl p-6 grid grid-cols-3 gap-3 z-50 w-[600px]"
+                    onMouseEnter={openConsultas}
+                    onMouseLeave={closeConsultas}
+                  >
+                    {consultas.map((item) => (
+                      <a
+                        key={item}
+                        href={`https://www.dimeg.com.br/consultas/${toSlug(item)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-blue-600 transition-colors"
+                      >
+                        {item}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : item.external ? (
               <a
                 key={item.title}
                 href={item.href}
@@ -104,36 +128,9 @@ const Header = () => {
               </Link>
             )
           )}
-
-          {/* CONSULTAS DROPDOWN */}
-          <div
-            className="relative text-sm font-medium text-white/90 hover:text-white cursor-pointer select-none"
-            onMouseEnter={() => setConsultasOpen(true)}
-            onMouseLeave={() => setConsultasOpen(false)}
-          >
-            <div className="flex items-center gap-1">
-              Consultas <ChevronDown size={16} />
-            </div>
-
-            {consultasOpen && (
-              <div className="absolute left-0 mt-3 bg-white text-gray-900 rounded-md shadow-xl p-6 grid grid-cols-3 gap-3 z-50 w-[600px]">
-                {consultas.map((item) => (
-                  <a
-                    key={item}
-                    href={`https://www.dimeg.com.br/consultas/${toSlug(item)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-blue-600 transition-colors"
-                  >
-                    {item}
-                  </a>
-                ))}
-              </div>
-            )}
-          </div>
         </nav>
 
-        {/* MOBILE NAV */}
+        {/* MOBILE MENU */}
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
           <SheetTrigger asChild className="md:hidden">
             <Button variant="ghost" size="icon">
@@ -144,9 +141,26 @@ const Header = () => {
           <SheetContent side="right" className="w-[300px]">
             <nav className="flex flex-col space-y-4 mt-8">
 
-              {/* Itens normais */}
               {menuItems.map((item) =>
-                item.external ? (
+                item.dropdown ? (
+                  <div key="consultas-mobile" className="mt-4">
+                    <p className="font-semibold text-gray-600 mb-3">Consultas</p>
+                    <div className="grid grid-cols-1 gap-2">
+                      {consultas.map((esp) => (
+                        <a
+                          key={esp}
+                          href={`https://www.dimeg.com.br/consultas/${toSlug(esp)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => setMobileOpen(false)}
+                          className="text-base font-medium hover:text-primary transition-colors"
+                        >
+                          {esp}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                ) : item.external ? (
                   <a
                     key={item.title}
                     href={item.href}
@@ -168,25 +182,6 @@ const Header = () => {
                   </Link>
                 )
               )}
-
-              {/* Consultas no mobile */}
-              <div className="mt-6">
-                <p className="font-semibold text-gray-600 mb-3">Consultas</p>
-                <div className="grid grid-cols-1 gap-2">
-                  {consultas.map((item) => (
-                    <a
-                      key={item}
-                      href={`https://www.dimeg.com.br/consultas/${toSlug(item)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => setMobileOpen(false)}
-                      className="text-base font-medium hover:text-primary transition-colors"
-                    >
-                      {item}
-                    </a>
-                  ))}
-                </div>
-              </div>
             </nav>
           </SheetContent>
         </Sheet>
