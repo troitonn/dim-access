@@ -33,7 +33,7 @@ const Hero = () => {
 
           {/* Imagem fixa NO FINAL da seção */}
           <div className="w-full flex justify-center md:justify-start order-2 md:order-1">
-            <img
+            <img style={{ marginRight: "10px" }}
               src={heroPerson}
               alt="Profissional DIM+ Saúde"
               className="w-auto max-h-[500px] object-contain drop-shadow-2xl mt-10 md:mt-0"
