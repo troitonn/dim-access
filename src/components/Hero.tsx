@@ -29,19 +29,19 @@ const Hero = () => {
       />
 
       <div className="container mx-auto px-4 z-10 relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 items-end gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-end gap-4">
 
-          {/* Imagem fixa NO FINAL da seção */}
-          <div className="w-full flex justify-center md:justify-start order-2 md:order-1">
-            <img style={{ marginRight: "10px" }}
+          {/* Imagem mais próxima do texto */}
+          <div className="w-full flex justify-center md:justify-start order-2 md:order-1 md:pr-4">
+            <img
               src={heroPerson}
               alt="Profissional DIM+ Saúde"
               className="w-auto max-h-[500px] object-contain drop-shadow-2xl mt-10 md:mt-0"
             />
           </div>
 
-          {/* Texto */}
-          <div className="flex flex-col items-center text-center space-y-4 md:ml-[-96px] order-1 md:order-2">
+          {/* Texto mais próximo da imagem */}
+          <div className="flex flex-col items-center text-center space-y-4 order-1 md:order-2 md:ml-[-40px]">
             <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight tracking-tight">
               DIM<span className="text-primary-light">+</span> Saúde
             </h1>
