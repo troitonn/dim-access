@@ -10,7 +10,7 @@ const AppDownload = () => {
       <div className="absolute bottom-10 right-10 w-[520px] h-[520px] bg-primary-light/20 rounded-full blur-3xl opacity-70 animate-pulse" />
 
       <div className="container mx-auto px-6 relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-end gap-16">
 
           {/* LADO ESQUERDO — TEXTO */}
           <div className="space-y-8 animate-fade-in-up text-center md:text-right order-2 md:order-1">
@@ -19,11 +19,9 @@ const AppDownload = () => {
             </h2>
 
             <p className="text-lg md:text-xl text-gray-600 max-w-lg md:ml-auto leading-relaxed animate-fade-in-up">
-              Acesse consultas, telemedicina, carteirinha digital e rede credenciada
-              diretamente pelo seu celular com praticidade e rapidez.
+              Acesse consultas, telemedicina, carteirinha digital e rede credenciada diretamente pelo seu celular.
             </p>
 
-            {/* BENEFÍCIOS */}
             <div className="space-y-3 text-gray-700 md:ml-auto">
               {[
                 "Carteirinha Digital sempre disponível",
@@ -37,7 +35,6 @@ const AppDownload = () => {
               ))}
             </div>
 
-            {/* BOTÕES */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center md:justify-end animate-fade-in-up">
               <a
                 href="https://play.google.com/store/apps/details?id=com.javenessi.dimmsaude&pcampaignid=web_share"
@@ -71,8 +68,8 @@ const AppDownload = () => {
             </div>
           </div>
 
-          {/* LADO DIREITO — IMAGEM DO APP */}
-          <div className="flex justify-center md:justify-center order-1 md:order-2 animate-fade-in-up">
+          {/* LADO DIREITO — IMAGEM, sempre embaixo mas com espaçamento */}
+          <div className="flex justify-center md:justify-center order-1 md:order-2 animate-fade-in-up mt-10 md:mt-0 md:self-end pb-6">
             <img
               src={appImg}
               alt="Aplicativo DIM+ Saúde"
