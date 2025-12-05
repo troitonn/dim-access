@@ -55,63 +55,67 @@ const Plans = () => {
             <div
               key={index}
               className={`
-                relative rounded-3xl p-[2px] overflow-hidden transition-all duration-300
+                relative rounded-3xl p-[2px] overflow-hidden transition-all duration-300 group hover:shadow-lg
                 ${
                   plan.highlighted
-                    ? "bg-gradient-to-r from-blue-400 to-blue-700 shadow-xl"
-                    : "bg-border/50"
+                    ? "bg-gradient-to-r from-blue-400 to-blue-700 shadow-xl scale-[1.02]"
+                    : "bg-border/50 hover:bg-blue-200/50"
                 }
               `}
             >
               {/* Fundo branco interno */}
-              <div className="rounded-3xl bg-card p-8 h-full relative z-10">
+              <div className="rounded-3xl bg-card p-8 h-full relative z-10 flex flex-col">
                 {plan.highlighted && (
                   <div className="absolute top-0 right-0 bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 py-2 text-sm font-bold rounded-bl-2xl z-20 shadow-md">
                     MAIS POPULAR
                   </div>
                 )}
 
-                <h3 className="text-2xl font-bold text-foreground mb-2">
+                <h3 className="text-2xl font-bold text-foreground mb-4">
                   {plan.name}
                 </h3>
 
-                <div className="mb-6">
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-muted-foreground">
+                <div className="mb-8 pb-8 border-b border-border/50">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-muted-foreground text-sm font-medium uppercase tracking-wide">
                       Taxa de adesão:
                     </span>
-                    <span className="text-2xl font-bold text-primary">
+                    <span className="text-lg font-semibold text-blue-600">
                       R$ {plan.adhesionFee}
                     </span>
                   </div>
 
-                  {/* Preço destacado */}
-                  <div className="flex items-baseline gap-2 mt-2">
-                    <span
-                      className="
-                        text-4xl font-bold 
-                        bg-gradient-to-r from-[#0057FF] to-[#00C2FF] 
-                        text-white px-3 py-1 rounded-lg shadow-sm
-                      "
-                    >
-                      R$ {plan.price}
+                  {/* Preço com Design Clean e Moderno */}
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-2xl font-bold text-muted-foreground">
+                      R$
                     </span>
-                    <span className="text-muted-foreground">/mês</span>
+                    <span className="text-6xl font-extrabold tracking-tight bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+                      {plan.price.split(",")[0]}
+                    </span>
+                    <div className="flex flex-col items-start leading-none">
+                      <span className="text-2xl font-bold text-blue-500">
+                        ,{plan.price.split(",")[1]}
+                      </span>
+                      <span className="text-muted-foreground font-medium text-sm">
+                        /mês
+                      </span>
+                    </div>
                   </div>
-
-                  <p className="text-sm text-muted-foreground mt-1">
-                    12 parcelas
+                  
+                  <p className="text-xs text-muted-foreground mt-2 font-medium bg-blue-50 text-blue-600 inline-block px-2 py-1 rounded">
+                    Parcele em até 12x
                   </p>
                 </div>
 
-                {/* Features */}
-                <div className="space-y-3 mb-8">
+                {/* Features - Flex grow para empurrar o botão para baixo */}
+                <div className="space-y-4 mb-8 flex-grow">
                   {plan.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
-                        <Check className="w-3 h-3 text-primary" />
+                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-50 flex items-center justify-center mt-0.5">
+                        <Check className="w-4 h-4 text-blue-600" />
                       </div>
-                      <span className="text-foreground text-sm leading-relaxed">
+                      <span className="text-muted-foreground text-sm leading-relaxed font-medium">
                         {feature}
                       </span>
                     </div>
@@ -122,15 +126,15 @@ const Plans = () => {
                 <Button
                   variant={plan.highlighted ? "default" : "outline"}
                   size="lg"
-                  className={`w-full ${
+                  className={`w-full h-12 text-base font-semibold rounded-xl transition-all duration-300 ${
                     plan.highlighted
-                      ? "bg-gradient-to-r from-blue-500 to-blue-700 text-white hover:opacity-90"
-                      : ""
+                      ? "bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 shadow-lg shadow-blue-500/25"
+                      : "hover:bg-blue-50 hover:text-blue-600 border-2"
                   }`}
                   asChild
                 >
                   <a href={plan.link} target="_blank" rel="noopener noreferrer">
-                    <MessageCircle className="mr-2" />
+                    <MessageCircle className="mr-2 w-5 h-5" />
                     Quero este plano
                   </a>
                 </Button>
@@ -138,13 +142,13 @@ const Plans = () => {
 
               {/* Brilho externo (glow) do destaque */}
               {plan.highlighted && (
-                <div className="absolute inset-0 rounded-3xl bg-blue-500 blur-2xl opacity-20 z-0"></div>
+                <div className="absolute inset-0 rounded-3xl bg-blue-500 blur-2xl opacity-10 z-0"></div>
               )}
             </div>
           ))}
         </div>
 
-        <p className="text-center text-muted-foreground mt-8 max-w-3xl mx-auto">
+        <p className="text-center text-muted-foreground mt-12 max-w-3xl mx-auto text-sm">
           Ambos os planos oferecem acesso imediato após adesão e são perfeitos
           para quem busca saúde acessível sem burocracia.
         </p>
