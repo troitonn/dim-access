@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Menu, ChevronDown, ChevronUp } from "lucide-react"; // Adicionado ChevronUp
+import { Menu, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Link } from "react-router-dom";
@@ -26,8 +26,8 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [consultasOpen, setConsultasOpen] = useState(false);
   
-  // Novo estado para controlar o accordion no mobile
-  const [mobileConsultasOpen, setMobileConsultasOpen] = useState(false);
+  // Estado para controlar o accordion no mobile (mantido do último ajuste)
+  const [mobileConsultasOpen, setMobileConsultasOpen] = useState(false); 
 
   // Delay para fechar menu desktop
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -86,7 +86,8 @@ const Header = () => {
 
                 {consultasOpen && (
                   <div
-                    className="absolute left-0 mt-3 bg-white text-gray-900 rounded-md shadow-xl p-6 grid grid-cols-3 gap-3 z-50 w-[600px]"
+                    // ALTERAÇÃO AQUI: Trocado 'left-0' por 'right-0'
+                    className="absolute right-0 mt-3 bg-white text-gray-900 rounded-md shadow-xl p-6 grid grid-cols-3 gap-3 z-50 w-[600px]"
                     onMouseEnter={openConsultas}
                     onMouseLeave={closeConsultas}
                   >
@@ -134,7 +135,6 @@ const Header = () => {
             </Button>
           </SheetTrigger>
 
-          {/* Adicionado overflow-y-auto no SheetContent para garantir rolagem geral se necessário */}
           <SheetContent side="right" className="w-[300px] overflow-y-auto">
             <nav className="flex flex-col space-y-4 mt-8 pb-10">
 
@@ -160,9 +160,6 @@ const Header = () => {
                         mobileConsultasOpen ? "max-h-80 opacity-100 mt-2" : "max-h-0 opacity-0"
                       }`}
                     >
-                      {/* max-h-64 define a altura fixa da área interna 
-                          overflow-y-auto cria a barra de rolagem apenas aqui
-                      */}
                       <div className="grid grid-cols-1 gap-3 overflow-y-auto max-h-64 pr-2 pl-2 bg-gray-50/50 rounded-md py-2">
                         {consultas.map((esp) => (
                           <a
