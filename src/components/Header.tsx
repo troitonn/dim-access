@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Menu, ChevronDown } from "lucide-react";
+import { Menu, ChevronDown, ChevronUp } from "lucide-react"; // Adicionado ChevronUp
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Link } from "react-router-dom";
@@ -25,8 +25,11 @@ const toSlug = (text: string) =>
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [consultasOpen, setConsultasOpen] = useState(false);
+  
+  // Novo estado para controlar o accordion no mobile
+  const [mobileConsultasOpen, setMobileConsultasOpen] = useState(false);
 
-  // Delay para fechar menu
+  // Delay para fechar menu desktop
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const openConsultas = () => {
@@ -37,27 +40,20 @@ const Header = () => {
   const closeConsultas = () => {
     timeoutRef.current = setTimeout(() => {
       setConsultasOpen(false);
-    }, 200); // delay de 200ms
+    }, 200);
   };
 
   const menuItems = [
     { title: "Início", href: "/" },
     { title: "Rede Credenciada", href: "/rede-credenciada" },
     { title: "Planos", href: "/planos" },
-
-    // Consultas AGORA fica aqui após Planos
     { title: "Consultas", dropdown: true },
-
     { title: "Quem Somos", href: "/quem-somos" },
-
-    // WhatsApp direto
     {
       title: "Seja um Parceiro",
       external: true,
       href: "https://wa.me/5511995193094"
     },
-
-    // Área do cliente externa
     {
       title: "Área do Cliente",
       external: true,
@@ -138,26 +134,49 @@ const Header = () => {
             </Button>
           </SheetTrigger>
 
-          <SheetContent side="right" className="w-[300px]">
-            <nav className="flex flex-col space-y-4 mt-8">
+          {/* Adicionado overflow-y-auto no SheetContent para garantir rolagem geral se necessário */}
+          <SheetContent side="right" className="w-[300px] overflow-y-auto">
+            <nav className="flex flex-col space-y-4 mt-8 pb-10">
 
               {menuItems.map((item) =>
                 item.dropdown ? (
-                  <div key="consultas-mobile" className="mt-4">
-                    <p className="font-semibold text-gray-600 mb-3">Consultas</p>
-                    <div className="grid grid-cols-1 gap-2">
-                      {consultas.map((esp) => (
-                        <a
-                          key={esp}
-                          href={`https://www.dimeg.com.br/consultas/${toSlug(esp)}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={() => setMobileOpen(false)}
-                          className="text-base font-medium hover:text-primary transition-colors"
-                        >
-                          {esp}
-                        </a>
-                      ))}
+                  <div key="consultas-mobile" className="border-b border-gray-100 pb-2">
+                    {/* Botão de Expandir/Recolher */}
+                    <button
+                      onClick={() => setMobileConsultasOpen(!mobileConsultasOpen)}
+                      className="flex items-center justify-between w-full text-lg font-medium text-left py-2 hover:text-primary transition-colors focus:outline-none"
+                    >
+                      Consultas
+                      {mobileConsultasOpen ? (
+                        <ChevronUp className="h-5 w-5 text-gray-500" />
+                      ) : (
+                        <ChevronDown className="h-5 w-5 text-gray-500" />
+                      )}
+                    </button>
+
+                    {/* Área da lista com Animação e Rolagem */}
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                        mobileConsultasOpen ? "max-h-80 opacity-100 mt-2" : "max-h-0 opacity-0"
+                      }`}
+                    >
+                      {/* max-h-64 define a altura fixa da área interna 
+                          overflow-y-auto cria a barra de rolagem apenas aqui
+                      */}
+                      <div className="grid grid-cols-1 gap-3 overflow-y-auto max-h-64 pr-2 pl-2 bg-gray-50/50 rounded-md py-2">
+                        {consultas.map((esp) => (
+                          <a
+                            key={esp}
+                            href={`https://www.dimeg.com.br/consultas/${toSlug(esp)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => setMobileOpen(false)}
+                            className="text-base text-gray-600 font-medium hover:text-primary transition-colors block border-b border-gray-100 last:border-0 pb-1"
+                          >
+                            {esp}
+                          </a>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 ) : item.external ? (
@@ -167,7 +186,7 @@ const Header = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setMobileOpen(false)}
-                    className="text-lg font-medium hover:text-primary transition-colors"
+                    className="text-lg font-medium hover:text-primary transition-colors border-b border-transparent hover:border-gray-100 py-2"
                   >
                     {item.title}
                   </a>
@@ -176,7 +195,7 @@ const Header = () => {
                     key={item.title}
                     to={item.href}
                     onClick={() => setMobileOpen(false)}
-                    className="text-lg font-medium hover:text-primary transition-colors"
+                    className="text-lg font-medium hover:text-primary transition-colors border-b border-transparent hover:border-gray-100 py-2"
                   >
                     {item.title}
                   </Link>
