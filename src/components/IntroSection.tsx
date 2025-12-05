@@ -4,7 +4,7 @@ import appImg from "@/assets/app.png";
 
 const AppDownload = () => {
   return (
-    <section className="relative overflow-hidden py-20 bg-gradient-to-br from-[#eef1ff] via-white to-[#dfe3ff]">
+    <section className="relative overflow-hidden py-12 bg-gradient-to-br from-[#eef1ff] via-white to-[#dfe3ff]">
       {/* ELEMENTOS DE FUNDO */}
       <div className="absolute top-20 left-10 w-[420px] h-[420px] bg-primary/20 rounded-full blur-3xl opacity-70 animate-pulse" />
       <div className="absolute bottom-10 right-10 w-[520px] h-[520px] bg-primary-light/20 rounded-full blur-3xl opacity-70 animate-pulse" />
@@ -13,7 +13,7 @@ const AppDownload = () => {
         <div className="flex flex-col-reverse md:grid md:grid-cols-2 items-end gap-16">
 
           {/* LADO ESQUERDO — TEXTO */}
-          <div className="space-y-8 animate-fade-in-up text-center md:text-right order-2 md:order-1">
+          <div className="space-y-8 animate-fade-in-up text-center md:text-center order-2 md:order-1">
             <h2 className="text-4xl md:text-5xl font-bold text-primary-dark leading-tight animate-fade-in">
               Baixe o aplicativo DIM<span className="text-primary-light">+</span> Saúde
             </h2>
@@ -84,3 +84,4 @@ const AppDownload = () => {
 };
 
 export default AppDownload;
+
