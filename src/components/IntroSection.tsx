@@ -10,7 +10,7 @@ const AppDownload = () => {
       <div className="absolute bottom-10 right-10 w-[520px] h-[520px] bg-primary-light/20 rounded-full blur-3xl opacity-70 animate-pulse" />
 
       <div className="container mx-auto px-6 relative">
-        <div className="flex flex-col-reverse md:grid md:grid-cols-2 items-end gap-16" items-end gap-16">
+        <div className="flex flex-col-reverse md:grid md:grid-cols-2 items-end gap-16">
 
           {/* LADO ESQUERDO — TEXTO */}
           <div className="space-y-8 animate-fade-in-up text-center md:text-right order-2 md:order-1">
