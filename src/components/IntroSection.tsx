@@ -13,7 +13,7 @@ const AppDownload = () => {
         <div className="flex flex-col-reverse md:grid md:grid-cols-2 items-start gap-10 md:gap-6"> {/* sobe tudo */}
 
           {/* LADO ESQUERDO — TEXTO */}
-          <div className="space-y-6 animate-fade-in-up text-center md:text-left order-2 md:order-1 mt-4 md:mt-0"> {/* sobe texto */}
+          <div className="-mt-6 space-y-8 animate-fade-in-up text-center md:text-left order-2 md:order-1 mt-4 md:mt-0"> {/* sobe texto */}
             <h2 className="text-4xl md:text-5xl font-bold text-primary-dark leading-tight animate-fade-in">
               Baixe o aplicativo DIM<span className="text-primary-light">+</span> Saúde
             </h2>
