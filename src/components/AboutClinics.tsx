@@ -27,7 +27,7 @@ const AboutClinics = () => {
     },
   ];
 
-  const whatsappNumber = "5511983730500";
+  const whatsappNumber = "5511995193094";
   const whatsappMessage = encodeURIComponent("Olá! Quero saber mais sobre as clínicas DIMEG!");
 
   return (
